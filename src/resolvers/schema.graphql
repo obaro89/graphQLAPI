@@ -1,0 +1,37 @@
+type Mutation {
+  addUser(username: String!): User!
+  addBook(title: String!, author: String!, isbn: String!): Book!
+  addReview(
+    text: String!
+    rating: Int!
+    reviewerId: String!
+    bookId: String!
+  ): Review!
+}
+
+type Query {
+  getUsers: [User!]!
+  getBooks: [Book!]!
+}
+
+type User {
+  id: ID!
+  username: String!
+  reviews: [Review!]!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  author: String!
+  isbn: String!
+  reviews: [Review!]!
+}
+
+type Review {
+  id: ID!
+  text: String!
+  rating: Int!
+  reviewer: User!
+  book: Book!
+}
